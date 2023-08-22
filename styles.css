@@ -1,0 +1,40 @@
+/* Variables */
+:root {
+    --variable: #965811; 
+}
+
+/* Font import */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: var(--variable);
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 2px solid var(--variable);
+    padding: 20px;
+    background-color: #e0bb52;
+}
+
+.photo img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid var(--variable);
+}
+
+.contact, .education, .skills, .experience, .projects, .interests, .software, .languages, .references {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.skill-item, .software-item, .language-item {
+    display: flex;
+    justify-content: space-between;
+}
