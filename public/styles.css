@@ -1,0 +1,94 @@
+/* Estilos globales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Estilos para las opciones */
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.option {
+  text-align: center;
+}
+
+.option img {
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los checkboxes */
+input[type="checkbox"] {
+  margin-top: 10px;
+}
+
+/* Estilos para el botón */
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  max-width: 200px;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: auto;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.results {
+  margin-top: 20px;
+}
+
+.bar {
+  width: 100%;
+  height: 20px;
+}
+
+.option1-bar {
+  height: 100%;
+  background-color: rgb(237, 247, 96);
+  float: left;
+}
+
+.option2-bar {
+  height: 100%;
+  background-color: rgb(28, 223, 190);
+  float: left;
+}
+
+#percentageText {
+  text-align: center;
+  margin-top: 10px;
+}

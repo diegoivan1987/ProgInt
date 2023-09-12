@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Página de Votaciones</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="/socket.io/socket.io.js"></script> 
+</head>
+<body>
+
+  <div class="container">
+    <h1>¿Qué mascota prefieres?</h1>
+
+    <div class="options">
+      <div class="option">
+        <img src="./gato.png" alt="Gatos">
+        <br>
+        <input type="checkbox" id="option1" name="vote" value="option1">
+        <label for="option1">Gatos</label>
+      </div>
+
+      <div class="option">
+        <img src="./perro.jpg" alt="Perros">
+        <br>
+        <input type="checkbox" id="option2" name="vote" value="option2">
+        <label for="option2">Perros</label>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button type="submit" id="voteButton">Votar</button>
+    </div>
+
+    <div class="results">
+      <div class="bar" id="resultBar">
+        <div class="option1-bar" id="option1Bar"></div>
+        <div class="option2-bar" id="option2Bar"></div>
+      </div>
+      <div id="percentageText">Gatos: 0% | Perros: 0%</div>
+    </div>
+
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
