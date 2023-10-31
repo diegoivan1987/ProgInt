@@ -1,3 +1,5 @@
+#https://www.kaggle.com/datasets/aunanya875/suicidal-tweet-detection-dataset/
+
 # Importamos las bibliotecas
 import pandas as pd
 import tensorflow as tf
