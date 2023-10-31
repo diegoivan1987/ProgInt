@@ -1,6 +1,7 @@
 # Importamos las bibliotecas
 import pandas as pd
 import tensorflow as tf
+import pickle
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
@@ -37,3 +38,10 @@ model.fit(X_train, y_train, epochs=30, validation_data=(X_test, y_test))
 # Evaluamos el modelo
 loss, accuracy = model.evaluate(X_test, y_test)
 print(f"Accuracy: {accuracy*100:.2f}%")
+
+# Guardamos el modelo en formato .h5
+model.save("suicide_classifier_model.h5")
+
+# Guardamos el tokenizer usando pickle
+with open('tokenizer.pickle', 'wb') as handle:
+    pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
