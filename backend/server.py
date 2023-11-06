@@ -34,7 +34,7 @@ async def evaluate_text(text_model: TextModel):
     text = text_model.text
     # Procesamos el texto de entrada
     sequence = tokenizer.texts_to_sequences([text])
-    padded_sequence = pad_sequences(sequence, maxlen=240, padding='post')  # Asumiendo que 240 es la longitud que usaste al entrenar
+    padded_sequence = pad_sequences(sequence, maxlen=240, padding='post')
 
     # Evaluamos el texto con el modelo
     prediction = model.predict(padded_sequence)
@@ -50,6 +50,6 @@ async def evaluate_text(text_model: TextModel):
         predictions = []
         # Devolvemos el resultado basado en el promedio
         if average_prediction > 0.5:
-            return {"result": "El usuario tiene tendencias suicidas."}
+            return {"result": "1"}
         else:
-            return {"result": "El usuario no tiene tendencias suicidas."}
+            return {"result": "0"}

@@ -42,8 +42,6 @@ const questions = [
 // Reorganizar aleatoriamente las preguntas
 shuffleArray(questions);
 
-console.log(questions); // El array se ha reorganizado aleatoriamente
-
 
 const questionsNumber = questions.length;
 let currentQuestionIndex = 0; 
@@ -71,9 +69,6 @@ function nextQuestion() {
         // Aún hay preguntas por mostrar
         currentQuestionIndex++;
         showCurrentQuestion();
-    } else {
-        // No hay más preguntas, mostrar mensaje final
-        botMsg("termino");
     }
 }
 
@@ -112,14 +107,27 @@ async function userMsg(event) {
 
         const data = await response.json();
 
-        // Aquí puedes decidir qué hacer con la respuesta del servidor
-        console.log(data.result);
+        // Si es la última pregunta, mostrar el resultado del servidor
+        if (currentQuestionIndex === questionsNumber - 1) {
+            if(data.result == "0"){
+                botMsg("Según tus respuestas, parece que actualmente no presentas tendencias suicidas. No obstante, si en algún momento sientes que tu estado de ánimo cambia o las circunstancias se vuelven abrumadoras, recuerda que es completamente válido y beneficioso buscar apoyo. Mantener un diálogo abierto con amigos, familiares o profesionales de la salud mental puede ser de gran ayuda. La vida puede tener altibajos, y cuidar de tu bienestar emocional es tan importante como cuidar de tu salud física.");}
+            else{
+                botMsg(`Tus respuestas sugieren que podrías estar experimentando pensamientos o tendencias suicidas. Es crucial que sepas que no estás solo/a y que hay ayuda disponible. Te instamos a que te pongas en contacto inmediatamente con un profesional de salud mental o llames a una línea de emergencia para hablar con alguien que puede brindarte apoyo y guía en este momento difícil.
+
+                Aquí hay algunos recursos que puedes utilizar:
+                - -En México, el teléfono de la Red Nacional de Apoyo Emocional y Prevención del Suicidio es el 800 822 3737.
+                - A nivel internacional, la línea de ayuda de Befrienders Worldwide (www.befrienders.org) puede guiarte hacia apoyo en tu país.
+
+                Por favor, considera contactar a estos servicios o visitar el centro de salud más cercano. También es importante que compartas cómo te sientes con alguien de confianza, ya sea un amigo o un familiar. No tienes que pasar por esto solo/a, y hay personas que quieren y pueden ayudarte a superar este momento.`);
+            }
+        } else {
+            // Mostrar la siguiente pregunta
+            nextQuestion();
+        }
 
     } catch (error) {
         console.error('Hubo un problema con la petición Fetch:', error);
+        botMsg("Hubo un error al procesar tu mensaje. Por favor, intenta de nuevo.");
     }
-
-    // Mostrar la siguiente pregunta
-    nextQuestion();
 }
 
