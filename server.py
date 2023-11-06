@@ -3,6 +3,8 @@ import tensorflow as tf
 import pickle
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from TextModel import TextModel
+
 
 app = FastAPI()
 
@@ -14,7 +16,8 @@ with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 @app.post("/evaluate/")
-async def evaluate_text(text: str):
+async def evaluate_text(text_model: TextModel):
+    text = text_model.text
     # Procesamos el texto de entrada
     sequence = tokenizer.texts_to_sequences([text])
     padded_sequence = pad_sequences(sequence, maxlen=240, padding='post')  # Asumiendo que 240 es la longitud que usaste al entrenar
