@@ -25,8 +25,12 @@ model = tf.keras.models.load_model("suicide_classifier_model.h5")
 with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
+# Lista para mantener las predicciones
+predictions = []
+
 @app.post("/evaluate/")
 async def evaluate_text(text_model: TextModel):
+    global predictions
     text = text_model.text
     # Procesamos el texto de entrada
     sequence = tokenizer.texts_to_sequences([text])
@@ -35,8 +39,17 @@ async def evaluate_text(text_model: TextModel):
     # Evaluamos el texto con el modelo
     prediction = model.predict(padded_sequence)
 
-    # Devolvemos el resultado
-    if prediction[0][0] > 0.5:
-        return {"result": "El texto ingresado tiene una connotación relacionada con el suicidio."}
-    else:
-        return {"result": "El texto ingresado no tiene una connotación relacionada con el suicidio."}
+    # Agregamos la predicción a la lista
+    predictions.append(prediction[0][0])
+
+    # Verificamos si hemos recibido 10 consultas
+    if len(predictions) == 10:
+        # Calculamos el promedio de las predicciones
+        average_prediction = sum(predictions) / len(predictions)
+        # Reseteamos la lista de predicciones para futuras consultas
+        predictions = []
+        # Devolvemos el resultado basado en el promedio
+        if average_prediction > 0.5:
+            return {"result": "El usuario tiene tendencias suicidas."}
+        else:
+            return {"result": "El usuario no tiene tendencias suicidas."}
