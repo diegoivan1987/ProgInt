@@ -1,6 +1,6 @@
 // Definir las imágenes que se utilizarán
 const images = ["images/Bot1.png", "images/Bot2.png",
-    "images/Bot3.png", "images/Bot2.png"];
+    "images/Bot3.png"];
 let currentIndex = 0;
 
 // Función para cambiar la imagen
@@ -67,11 +67,19 @@ function showCurrentQuestion() {
 
 // Función para avanzar a la siguiente pregunta
 function nextQuestion() {
-    currentQuestionIndex = (currentQuestionIndex + 1) % questionsNumber;
-    showCurrentQuestion();
+    if (currentQuestionIndex < questionsNumber - 1) {
+        // Aún hay preguntas por mostrar
+        currentQuestionIndex++;
+        showCurrentQuestion();
+    } else {
+        // No hay más preguntas, mostrar mensaje final
+        botMsg("termino");
+    }
 }
 
 // Mostrar la primera pregunta al inicio
+showCurrentQuestion();
+
 
 // Mostrar mensaje de Usuario y enviar al servidor
 async function userMsg(event) {
