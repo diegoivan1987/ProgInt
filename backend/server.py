@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import tensorflow as tf
 import pickle
 from tensorflow.keras.preprocessing.text import Tokenizer
@@ -7,6 +8,15 @@ from TextModel import TextModel
 
 
 app = FastAPI()
+
+# Configurar CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite todas las origenes
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos los métodos
+    allow_headers=["*"],  # Permite todos los headers
+)
 
 # Cargar el modelo previamente entrenado
 model = tf.keras.models.load_model("suicide_classifier_model.h5")
