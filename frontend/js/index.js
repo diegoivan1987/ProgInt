@@ -98,7 +98,7 @@ async function userMsg(event) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ text: msg }), // Asegúrate de que el servidor espera un objeto con una propiedad 'text'
+            body: JSON.stringify({ text: msg }),
         });
 
         if (!response.ok) {
@@ -109,6 +109,8 @@ async function userMsg(event) {
 
         // Si es la última pregunta, mostrar el resultado del servidor
         if (currentQuestionIndex === questionsNumber - 1) {
+            msgInput.disabled = true; 
+            sendbtn.disabled = true;
             if(data.result == "0"){
                 botMsg("Según tus respuestas, parece que actualmente no presentas tendencias suicidas. No obstante, si en algún momento sientes que tu estado de ánimo cambia o las circunstancias se vuelven abrumadoras, recuerda que es completamente válido y beneficioso buscar apoyo. Mantener un diálogo abierto con amigos, familiares o profesionales de la salud mental puede ser de gran ayuda. La vida puede tener altibajos, y cuidar de tu bienestar emocional es tan importante como cuidar de tu salud física.");}
             else{
