@@ -27,16 +27,16 @@ function shuffleArray(array) {
 
 // Array de preguntas
 const questions = [
-    "¿Cómo te encuentras emocionalmente en este momento?",
-    "¿Cómo ha sido tu día hasta ahora?",
-    "¿Tienes alguna preocupación o estrés que te esté afectando?",
-    "¿Cómo duermes por las noches? ¿Has tenido problemas de sueño?",
-    "¿Cómo te sientes en relación con tu trabajo o estudios?",
-    "¿Has tenido algún cambio importante en tu vida recientemente?",
-    "¿Qué actividades o pasatiempos te hacen sentir mejor cuando estás abrumado/a?",
-    "¿Cómo está tu salud física en general?",
-    "¿Tienes una red de apoyo o alguien con quien puedas hablar cuando te sientes mal?",
-    "¿Hay algo en particular que te gustaría compartir o discutir sobre cómo te sientes en este momento?"
+    "How are you feeling emotionally at this moment?",
+    "How has your day been so far?",
+    "Do you have any worries or stress that is affecting you?",
+    "How do you sleep at night? Have you had any sleep problems?",
+    "How do you feel about your work or studies?",
+    "Have you had any major changes in your life recently?",
+    "What activities or hobbies make you feel better when you are overwhelmed?",
+    "How is your overall physical health?",
+    "Do you have a support network or someone to talk to when you feel down?",
+    "Is there anything in particular that you would like to share or discuss about how you are feeling right now?"
 ];
 
 // Reorganizar aleatoriamente las preguntas
@@ -112,15 +112,16 @@ async function userMsg(event) {
             msgInput.disabled = true; 
             sendbtn.disabled = true;
             if(data.result == "0"){
-                botMsg("Según tus respuestas, parece que actualmente no presentas tendencias suicidas. No obstante, si en algún momento sientes que tu estado de ánimo cambia o las circunstancias se vuelven abrumadoras, recuerda que es completamente válido y beneficioso buscar apoyo. Mantener un diálogo abierto con amigos, familiares o profesionales de la salud mental puede ser de gran ayuda. La vida puede tener altibajos, y cuidar de tu bienestar emocional es tan importante como cuidar de tu salud física.");}
+                botMsg("Based on your responses, it seems that you are not currently showing any suicidal tendencies. However, if at any point you feel that your mood changes or circumstances become overwhelming, remember that it is completely valid and beneficial to seek support. Maintaining an open dialogue with friends, family, or mental health professionals can be of great help. Life can have its ups and downs, and taking care of your emotional well-being is just as important as taking care of your physical health.");
+            }
             else{
-                botMsg(`Tus respuestas sugieren que podrías estar experimentando pensamientos o tendencias suicidas. Es crucial que sepas que no estás solo/a y que hay ayuda disponible. Te instamos a que te pongas en contacto inmediatamente con un profesional de salud mental o llames a una línea de emergencia para hablar con alguien que puede brindarte apoyo y guía en este momento difícil.
+                botMsg(`Your responses suggest that you might be experiencing suicidal thoughts or tendencies. It is crucial that you know you are not alone and that help is available. We urge you to immediately contact a mental health professional or call an emergency hotline to talk with someone who can provide support and guidance during this difficult time.
 
-                Aquí hay algunos recursos que puedes utilizar:
-                - -En México, el teléfono de la Red Nacional de Apoyo Emocional y Prevención del Suicidio es el 800 822 3737.
-                - A nivel internacional, la línea de ayuda de Befrienders Worldwide (www.befrienders.org) puede guiarte hacia apoyo en tu país.
+                Here are some resources you can use:
+                - In Mexico, the phone number for the National Network of Emotional Support and Suicide Prevention is 800 822 3737.
+                - Internationally, the Befrienders Worldwide helpline (www.befrienders.org) can guide you to support in your country.
 
-                Por favor, considera contactar a estos servicios o visitar el centro de salud más cercano. También es importante que compartas cómo te sientes con alguien de confianza, ya sea un amigo o un familiar. No tienes que pasar por esto solo/a, y hay personas que quieren y pueden ayudarte a superar este momento.`);
+                Please consider reaching out to these services or visiting the nearest health center. It is also important that you share how you're feeling with someone you trust, whether it's a friend or a family member. You don't have to go through this alone, and there are people who want and can help you through this moment.`);
             }
         } else {
             // Mostrar la siguiente pregunta
