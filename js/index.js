@@ -93,7 +93,7 @@ async function userMsg(event) {
 
     // Enviar el mensaje del usuario al servidor
     try {
-        const response = await fetch('http://localhost:8000/evaluate/', {
+        const response = await fetch('https://proyecto-cau7zjsfwq-uc.a.run.app/evaluate/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
