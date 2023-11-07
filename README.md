@@ -1,26 +1,47 @@
-Resumen:
-Este proyecto utiliza técnicas de procesamiento de lenguaje natural y aprendizaje profundo para identificar tendencias suicidas en textos. El modelo se entrena con un conjunto de datos de tweets, y luego se puede utilizar para evaluar textos arbitrarios y determinar si tienen connotaciones relacionadas con el suicidio.
+Nombre del Proyecto:
+EmotiTalk - Sistema de Clasificación para la Detección de Tendencias Suicidas
+![image](https://github.com/diegoivan1987/ProgInt/assets/47061340/b63e8683-317f-4f7b-b4fc-fab3dd76c308)
 
-![image](https://github.com/diegoivan1987/ProgInt/assets/47061340/41babd89-4924-458e-b8a5-42935177ebc7)
+Descripción:
+EmotiTalk es una API web diseñada para analizar mensajes de texto y detectar posibles tendencias suicidas en el contenido. Utiliza técnicas de procesamiento de lenguaje natural (PLN) y un modelo de inteligencia artificial entrenado para evaluar las respuestas proporcionadas por los usuarios a través de una interfaz de chat.
+
+Componentes Principales:
+
+FastAPI: Framework utilizado para construir la API, gestionar las solicitudes y las respuestas.
+TensorFlow y Keras: Bibliotecas para cargar y ejecutar el modelo de clasificación.
+Tokenizer: Procesa el texto y lo convierte en una secuencia de tokens que el modelo puede entender.
+CORS Middleware: Configurado para permitir solicitudes desde cualquier origen, lo que es esencial para que los clientes web interactúen con la API.
+TextModel: define la estructura de los datos de entrada esperados por la API.
+
+Funcionalidad:
+
+La API recibe un mensaje de texto a través de un endpoint POST.
+El texto se procesa usando un tokenizer y se prepara en una secuencia.
+El modelo de clasificación evalúa la secuencia y devuelve una predicción.
+Las predicciones se acumulan hasta alcanzar un total de 10, momento en el cual se calcula un promedio.
+Basándose en el promedio, la API devuelve un resultado que indica la presencia o ausencia de tendencias suicidas.
+
+Instalación y Uso:
+
+Instalar las dependencias: FastAPI, Uvicorn (para el servidor), TensorFlow.
+Iniciar el servidor con uvicorn main:app --reload.
+Hacer solicitudes POST al endpoint /evaluate/ con un objeto JSON que contenga el texto a evaluar.
+Estructura del Código:
+El código se divide en tres partes principales:
+
+Inicialización y configuración de la API - Configuración del CORS y carga de los componentes del modelo y tokenizer.
+Endpoint de la API - Un endpoint POST que recibe el texto, realiza la evaluación y devuelve el resultado.
+Frontend - Un simple HTML con JavaScript para interactuar con la API, que presenta un chatbot y gestiona las interacciones con el usuario.
+
+Para estimar el costo del proyecto de software utilizando el modelo COCOMO básico, se realizó el siguiente procedimiento:
+
+Se estimó el esfuerzo necesario aplicando la fórmula del modelo COCOMO, que considera el tamaño del software en líneas de código (LOC). Para un proyecto clasificado como orgánico, pequeño y no muy complejo, se utilizaron constantes estándar en la fórmula:
+![image](https://github.com/diegoivan1987/ProgInt/assets/47061340/8b8439dc-70ba-4b12-bb82-7faed24ad6ee)
+Con la inserción de los valores proporcionados en la fórmula anterior, el resultado fue aproximadamente 0.92 persona-mes de esfuerzo requerido para completar el proyecto.
+
+Para calcular el costo total, se multiplicó el esfuerzo estimado por el costo promedio mensual de un desarrollador en México. Se asumió un salario promedio de 30,000 pesos mexicanos al mes para un desarrollador con experiencia junior a semisenior.
+
+De esta forma, la estimación de costo fue calculada como sigue:
+![image](https://github.com/diegoivan1987/ProgInt/assets/47061340/6f363ec0-dcbf-4a1c-894a-9ae0a614cbee)
 
 
-Detalles:
-Preparación de Datos:
-
-Se utiliza un conjunto de datos de Kaggle que contiene tweets etiquetados según si tienen o no tendencias suicidas.
-Los datos se cargan desde un archivo CSV y se procesan utilizando la biblioteca pandas.
-
-Procesamiento de Texto:
-
-Se tokenizan los tweets para convertir el texto en secuencias numéricas utilizando Tokenizer de TensorFlow.
-
-Modelo:
-
-El modelo se compila con una función de pérdida de entropía cruzada binaria y se optimiza utilizando el optimizador Adam.
-Se entrena el modelo utilizando un conjunto de entrenamiento y se valida con un conjunto de prueba.
-La relacipon de los datos de entrenamiento y de prueba es 80-20.
-
-API:
-
-Se crea una API utilizando FastAPI que permite a los usuarios enviar textos para evaluación.
-La API carga el modelo y el tokenizer previamente entrenados y los utiliza para evaluar los textos enviados.
