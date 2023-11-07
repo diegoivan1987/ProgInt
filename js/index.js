@@ -130,7 +130,7 @@ async function userMsg(event) {
 
     } catch (error) {
         console.error('Hubo un problema con la petición Fetch:', error);
-        botMsg("Hubo un error al procesar tu mensaje. Por favor, intenta de nuevo.");
+        botMsg("There was an error processing your message. Please try again.");
     }
 }
 
